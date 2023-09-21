@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+// Union 정의
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    union Data data;
+
+    data.i = 10;
+    printf("data.i: %d\n", data.i);
+
+    data.f = 3.14;
+    printf("data.f: %.2f\n", data.f);
+
+    // Union을 사용할 때, 마지막으로 할당한 멤버의 값만 유효하다.
+    printf("data.i: %d\n", data.i); // 이 값은 무의미한 값일 수 있음
+
+    strcpy(data.str, "Hello, Union!");
+    printf("data.str: %s\n", data.str);
+
+    return 0;
+}
